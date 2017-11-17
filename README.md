@@ -1,2 +1,2 @@
 # lmsimpacta
-Repostório destino ao Projeto das Disciplinas da Faculdade Impacta
+Repostório destinado ao Projeto das Disciplinas da Faculdade Impacta
