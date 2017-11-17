@@ -4,6 +4,9 @@
 *.log
 local_settings.py
 
+# files DS_Store Mac OSX
+.DS_Store
+
 #
 __pycache__/
 *.py[cod]
