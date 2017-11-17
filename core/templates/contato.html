@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}Contato.{% endblock %}
+
+{% block main %}
+        <h1>Contato</h1>
+        <form method="POST" action="">
+                {{ form.errors }}
+                {% csrf_token %}
+                Nome: <input name="nome" /><br>
+                Email: <input name="email" /><br>
+                Mensagens: <textarea name="mensagem"></textarea><br>
+                <button type="submit">Enviar</button>
+        </form>
+{% endblock %}        
