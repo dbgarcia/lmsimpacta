@@ -1,31 +1,29 @@
+from django.contrib.auth.decorators import login_required, user_passes_test
 from django.shortcuts import render
-#from .forms import ContatoForm
-from core.models import Curso
-from core.forms import ContatoForm,CursoForm
-from core.cursoRN import CursoRN
+
 
 # Create your views here.
 def index(request):
     contexto={
-        "usuario":"Ser Humano",
-        #aluno,professor,sbruble
-        "perfil":"aluno",
+        
     }
     return render(request,"index.html",contexto)
+
+def aluno(request):
+    return render(request,"aluno.html")
+
+def professor(request):
+    return render(request,"professor.html")
 
 def disciplina(request):
     return render(request,"disciplina.html")
 
 def detalhe_curso(request):
-    contexto={
-        "cursos": CursoRN().all()
-    }
-    return render(request,"detalhe_curso.html",contexto)
+    return render(request,"detalhe_curso.html")
 
 def lista_cursos(request):
     contexto={
-        # "cursos":Curso.objects.all()
-        "cursos": CursoRN().all()
+        "cursos":Curso.objects.all()
     }
     return render(request,"lista_cursos.html",contexto)
 
@@ -33,14 +31,11 @@ def noticias(request):
     return render(request,"noticias.html")
 
 def contato(request):
-    print(request.POST)
     if request.POST:
-        form = ContatoForm(request.POST)
-        if form.is_valid():
-            form.envia_email()
+        form = ContactForm(request.POST)
+        #form.enviar_email()
     else:
-        form = ContatoForm()
-
+        form = ContactForm(request.POST)
     contexto = {
         "form":form
     }
@@ -49,16 +44,27 @@ def contato(request):
 def login(request):
     return render(request,"login.html")
 
-def curso(request):
-    print(request.POST)
-    if request.POST:
-        form = CursoForm(request.POST)
-        if form.is_valid():
-            form.save()
-    else:
-        form = CursoForm()
+def logout(request, *args, **kwargs):
+    kwargs['next_page'] = reverse('')
+    return logout(request, *args, **kwargs)
 
-    contexto = {
-        "form":form
-    }
-    return render(request,"curso.html",contexto)
+def checa_aluno(user):
+     return user.perfil == 'A'
+
+def checa_professor(user):
+     return user.perfil == 'P'
+
+
+
+# Funções de teste…
+@login_required(login_url='/entrar')
+@user_passes_test(checa_aluno, login_url='/?error=acesso', redirect_field_name=aluno)
+def aluno(request):
+     return render(request,"aluno.html")
+@user_passes_test(checa_professor, login_url='/?error=acesso', redirect_field_name=professor)
+@login_required(login_url='/entrar')
+def professor(request):
+     return render(request,"professor.html")
+
+
+
