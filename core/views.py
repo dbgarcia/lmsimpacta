@@ -54,15 +54,8 @@ def checa_aluno(user):
 def checa_professor(user):
      return user.perfil == 'P'
 
-# Funções de teste…
-# @login_required(login_url='/entrar')
-# @user_passes_test(checa_aluno, login_url='/?error=acesso', redirect_field_name=aluno)
-
 def aluno(request):
      return render(request,"aluno.html")
-    
-# @user_passes_test(checa_professor, login_url='/?error=acesso', redirect_field_name=professor)
-# @login_required(login_url='/entrar')
 
 def professor(request):
      return render(request,"professor.html")
