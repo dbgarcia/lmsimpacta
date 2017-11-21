@@ -1,0 +1,19 @@
+<!-- Coordenador -- >
+
+{% extends 'base.html' %}
+{% block title %}Contato.{% endblock %}
+
+{% block main %}
+        <h1>Curso</h1>
+        <form method="POST" action="">
+                {% csrf_token %}
+                {% for input in form %}
+                <div>
+                        {{ input.label_tag }}
+                        {{ input }}
+                        {{ input.errors}}
+                </div>
+                {% endfor %}
+                <button type="submit">Enviar</button>
+        </form>
+{% endblock %}        

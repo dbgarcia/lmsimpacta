@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %}Contato.{% endblock %}
+
+{% block main2 %}
+<center>
+        <h1>Contato</h1>
+        <form method="POST" class="form2">
+        	<descricao_curso>
+                {% csrf_token %}
+                Nome<br>
+                <input name="nome" class="contato"/><br>
+                Email <br>
+                <input name="email" class="contato" />
+                <br><br>
+                Mensagem <br>
+                <textarea name="mensagem" rows="5" cols="40"></textarea><br>
+                <br>
+                <center><button type="submit" class="butcont" >Enviar</button></center>
+            </descricao_curso>
+        </form>
+</center>
+<br><br><br><br>
+{% endblock %}        

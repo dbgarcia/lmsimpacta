@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<html lang="pt-br">
+
+    <head>
+        
+        {% extends 'base.html' %}
+        <meta charset="UTF-8">
+        {% block title %}Lista de Cursos.{% endblock %}
+    </head>
+    
+        {% block main2 %}
+    <body>
+
+
+<tipo_curso><h1><center>Pagina perfil de aluno</center></h1>
+<center>
+    
+    <p>
+        Informações do usuário:
+        <br>
+        nome {{  user.nome }}
+        |<br>
+        RA {{  user.ra }}
+        |<br>
+        email:{{ user.email }}
+        <br>
+        curso: {{ user.aluno.curso }}
+        
+        
+    </p> 
+
+</tipo_curso>
+    
+    {% endblock %}
+</body>
+</html>
