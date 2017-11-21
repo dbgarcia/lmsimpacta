@@ -20,7 +20,6 @@ class UsuarioManager(BaseUserManager):
 class Usuario(AbstractBaseUser):
     nome = models.CharField(max_length= 100)
     ra = models.IntegerField(unique=True)
-#     password = models.CharField(max_length= 30)
     email = models.CharField(max_length=100)
     perfil = models.CharField(max_length= 1, default='C')
     ativo = models.BooleanField(default=True)
@@ -73,7 +72,7 @@ class Aluno(Usuario):
         Curso
     )
 class Professor(Usuario):
-    carga_horaria = models.IntegerField()
-    disciplina = models.ForeignKey(
-        Disciplina
-    )
+    apelido = models.CharField(max_length=50)
+    celular = models.CharField(max_length=11)
+    
+

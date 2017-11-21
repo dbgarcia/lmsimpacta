@@ -39,7 +39,7 @@ class AlunoAdmin(UserAdmin):
 class NovoProfForm(forms.ModelForm):
     class Meta:
         model = Professor
-        fields = ('ra','nome', 'email', 'disciplina')
+        fields = ('ra','nome', 'email', 'celular', 'apelido')
             
     def save(self, commit=True):
         user = super(NovoProfForm, self).save(commit=False)
@@ -52,17 +52,17 @@ class NovoProfForm(forms.ModelForm):
 class AlterarProfForm(forms.ModelForm):
     class Meta:
         model = Professor
-        fields = ('email', 'nome', 'disciplina','carga_horaria')
+        fields = ('email', 'nome', 'apelido','celular')
 
 class ProfAdmin(UserAdmin):
     form = AlterarProfForm
     add_form = NovoProfForm
-    list_display = ('ra', 'nome','email','disciplina','carga_horaria')
+    list_display = ('ra', 'nome','email','celular','apelido')
     list_filter = ('perfil',)
-    fieldsets = ( (None, {'fields': ('ra', 'nome', 'email', 'disciplina')}),)
+    fieldsets = ( (None, {'fields': ('ra', 'nome', 'email', 'celular','apelido')}),)
     add_fieldsets = (
         (None, {
-             'fields': ('ra', 'nome', 'email', 'disciplina','carga_horaria')
+             'fields': ('ra', 'nome', 'email', 'apelido','celular')
             }),
     )
     search_fields = ('ra',)
