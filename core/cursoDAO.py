@@ -1,5 +1,5 @@
 
-
+from core.executorSQL import ExecutorSQL
 from core.models import Curso
 
 class CursoDAO():

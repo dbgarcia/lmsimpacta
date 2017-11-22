@@ -2,23 +2,24 @@
 <html>
 <head>
         <meta charset="UTF-8">
-        <link rel="stylesheet" type='text/css' href='/static/style.css' media="all">    
         {% extends 'base.html' %}
                 {% block title %}Login.{% endblock %}
                 
 </head>
 <body>
     
-        {% block main %}
-        <h1>Login</h1>
-        <form method="POST" action="">
-                Nome: <input name = "nome" /><br>
-                Email: <input name = "email" /><br>
-                <button type="submit">Enviar</button>
-        </form>
-        <br>
+        {% block main2 %}
+        <center>
+        <HP_comentario2><h2>Login</h2></HP_comentario2>
+        <form method="POST" class="form">
+                {% csrf_token %}
+                <descricao_curso>
+                {{form.as_p}}
+                <input type="submit" value="Entrar" class="butlog" />
+                <descricao_curso>
+        </center>
+        <br><br>
         {% endblock %}
-    </div> 
-
+</form>
 </body>
-</html>
+</html> 

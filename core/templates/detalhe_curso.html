@@ -6,18 +6,15 @@
             {% block title %}Detalhe de Cursos.{% endblock %}
     </head>
     <body>
-        {% block main %}
+        {% block main2 %}
             <center>
                 <ul>
                     {% for curso in cursos %}
                     
                     <nomecurso>Curso:{{ curso.nome }}</nomecurso><br>
                     <lista_cursos>Tipo {{ curso.tipo }}</lista_cursos><br>
-                    
                     <descricao_curso>
                     Carga Horária: {{ curso.carga_horaria }}<br>
-                    Descrição:<br>
-                    {{ curso.descricao }}<br><br>
                     Matriz Curricular:<br>
                     {{ curso.Matriz_Curricular }}<br>
                     <br><br><br>

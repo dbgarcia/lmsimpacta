@@ -3,7 +3,8 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1"> 
-        <link rel="stylesheet" href="/static/Base_layout.css">  
+        <link rel="stylesheet" href="/static/Base_layout.css">
+		<link rel="stylesheet" href="/static/font.css">
         <link rel="stylesheet" href="/static/mobile.css" media="(max-width: 320px)">    
         <title>
 		{% block title %}
@@ -15,31 +16,28 @@
     </head>
     <body>
         <div class="header">
-            
                 <img src="/static/impacta1.png">
-            
-
-        </div>
-                
-            
+        </div>            
         <ul class="topnav">
             <li><a class="active" href="/templates/index.html">Home</a></li>
             <li><a href="/templates/lista_cursos.html">Lista de Cursos</a></li>
-            <li><a href="/templates/detalhe_curso.html ">Detalhe de Cursos</a></li>
+            <li><a href="/templates/detalhe_curso.html ">Detalhes de Cursos</a></li>
             <li><a href="/templates/disciplina.html">Disciplinas</a></li>
             <li><a href="/templates/noticias.html">Noticias</a></li>
             <li><a href="/templates/contato.html">Contato</a></li>
-            <li><a href="">Sobre</a></li>  
-			{% if not usuario %}
+            <li><a href="#">Sobre</a></li>  
+            {% if not user.is_authenticated %}
             <li class="dropdown">
-                <a href="/templates/login.html">Login</a>
+                <a href="/entrar">Login</a>
+                <!-- 
                 <div class="dropdown-content">
-                    <input type="Text" placeholder="RA"/>
-                    <input type="password" placeholder="Senha"/>
-                    <button type="submit">Entrar</button>
-                        
+                        {% csrf_token %}
+                        {{form.as_p}}
+                        <input type="submit" value="Entrar" />
+                        -->
+            {% else %}
+            <li><a href="/sair">Logout</a></li> 
                 </div>
-                    
             </li>
 			{% endif %}
         </ul>
@@ -53,22 +51,25 @@
     			{% endblock %}
             </div>
             <div class="column middle">
-                {% block middle %}
+                {% block main2 %}
 
     			{% endblock %}
             </div>
             <div class="column side">
-                {% block side %}
+                {% block main3 %}
 
     			{% endblock %}
             </div>
         </div>
                   
         <div class="footer">
-            <img src="/static/impacta2.png " width="30%">
-            <p>                
+            <img src="/static/impacta2.png ">
+            <footer_font>
+            <div>
+                <br>
                 © 2017 Faculdade Impacta Tecnologia . Todos os direitos reservados
-            </p>
+            </div>
+            </footer_font>
         </div>
     </body>
 </html>

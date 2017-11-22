@@ -1,6 +1,5 @@
 from django.shortcuts import render
-from django.contrib.auth.decorators import login_required, user_passes_test
-from .forms import ContatoForm
+#from .forms import ContatoForm
 from core.models import Curso,Usuario
 from core.forms import ContatoForm,CursoForm
 
@@ -65,33 +64,4 @@ def curso(request):
         "form":form
     }
     return render(request,"curso.html",contexto)
-
-
-
-def logout(request, *args, **kwargs):
-    kwargs['next_page'] = reverse('')
-    return logout(request, *args, **kwargs)
-
-#Checa
-
-def checa_aluno(user):
-     return user.perfil == 'A'
-
-def checa_professor(user):
-     return user.perfil == 'P'
-
-#passtest
-
-@login_required(login_url='/login')
-@user_passes_test(checa_aluno, login_url='/?error=acesso', redirect_field_name=None)
-def aluno(request):
-     return render(request,"aluno.html")
-
-@login_required(login_url='/login')
-@user_passes_test(checa_professor, login_url='/?error=acesso', redirect_field_name=None)
-def professor(request):
-     return render(request,"professor.html")
-
-
-
 
