@@ -92,7 +92,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-# LOGIN_URL = '/login'
-
-# Specify the default test runner.
-# TEST_RUNNER = 'django.test.runner.DiscoverRunner'
+# Login
+AUTH_USER_MODEL = 'core.Usuario'
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'home'
