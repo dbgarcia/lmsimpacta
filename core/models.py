@@ -43,6 +43,9 @@ class Usuario(AbstractBaseUser):
         return True
     def get_full_name(self):
         return self.nome
+    
+    def __unicode__(self):
+        return unicode(self.nome) or u''
 
     def __str__(self):
         return self.nome
