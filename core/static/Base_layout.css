@@ -4,29 +4,101 @@
 
 body {
   margin: 0;
+  background-color: #f1f1f1;
 }
 
-/* Style the header */
 .header {
-    background-color: #aeb4b5;
+    background-color: #576e96;
     padding: 20px;
     text-align: center;
-    color: #32528b;
+}
 
+.butlog{
+    background-color: #1f417b;
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+}
 
+.butcont{
+    background-color: #1f417b;
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+input.contato{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 3px solid #ccc;
+    transition: 0.5s;
+    outline: none;
+}
+input.contato:focus {
+    border: 3px solid #555;
+}
+
+textarea{
+    width: 100%;
+    height: 150px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    font-size: 16px;
+    resize: none;
+}
+form{
+    width: 340px;
+    height: 190px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    font-size: 16px;
+    resize: none;
+}
+
+.form2{
+    width: 340px;
+    height: 470px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    font-size: 16px;
+    resize: none;
+}
+
+img{
+    width: 70%;
+    height: auto;
 }
 
 .header img{
-    max-width: 100%;
+    max-width: 50%;
     width:auto ;
 }
+
 ul.topnav {
     list-style-type: none;  
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #000000;
+    background-color: #222;
     font-size: 20px;
+    font-family: sans-serif;
 }
 
 ul.topnav li {float: left;}
@@ -39,16 +111,9 @@ ul.topnav li a {
     text-decoration: none;
 }
 
-ul.topnav li a:hover:not(.active) {background-color: #32528b;}
+ul.topnav li a:hover:not(.active) {background-color: #4e4d4d;}
 
-ul.topnav li a.active {background-color: #32528b;}
-
-
-
-@media screen and (max-width: 600px){
-    ul.topnav li.right, 
-    ul.topnav li {float: none;}
-}
+ul.topnav li a.active {background-color: #1f417b;}
 
 .dropdown-content {
     display: none;
@@ -81,6 +146,7 @@ ul.topnav li a.active {background-color: #32528b;}
     transition: all 0.3 ease;
     cursor: pointer;
 }
+
 .dropdown-content button:hover, button:active, button:focus {
     background: #32528b;
     position: absolute;
@@ -93,50 +159,52 @@ ul.topnav li a.active {background-color: #32528b;}
     display: block;
 }
 
-
-
-/* Create three unequal columns that floats next to each other */
 .column {
     float: left;
     padding: 10px;
 }
 
-/* Left and right column */
 .column.side {
     width: 25%;
 }
 
-/* Middle column */
 .column.middle {
     width: 50%;
 }
 
-/* Clear floats after the columns */
+.columm.middle img{
+	max-width: 100%;
+    width:auto ;
+}
+
 .row:after {
     content: "";
     display: table;
     clear: both;
 }
 
-/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
-@media (max-width: 600px) {
-    .column.side, .column.middle {
-        width: 100%;
-    }
+.footer {
+    background-color: #000000;
+    padding: 10px;
+    text-align: center;
+    color: white;
 }
 
-/* Style the footer */
-  .footer {
-      background-color: #000000;
-      padding: 10px;
-      text-align: center;
-      color: white;
-  }
-
-  .footer img{
-    max-width: 100%;
-    min-width: 160px;
+.footer img{
+    max-width: 200px;
     height: auto;
     align-content: left ;
 
   }
+
+@media (max-width: 870px) {
+    .column.side, .column.middle {
+        width: 100%;
+    }
+
+@media screen and (max-width: 600px){
+    ul.topnav li.right, 
+    ul.topnav li {float: none;}
+    .header img{max-width: 100%;}
+    ul.topnav li a {padding: 10px 16px;}
+}
