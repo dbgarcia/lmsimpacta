@@ -8,7 +8,7 @@ mysqlconndict = dict(s.split('=',1) for s in mysqlconnlst)
 PROJECT_ROOT = path.dirname(path.abspath(path.dirname(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'zne*e2op%jdw&=z4^3p$l@!@$l+15f)w@c3-w-zd137-n8ej0$'
+SECRET_KEY = 'de-8hu051)wjdhzt_ag6i)ndpgbg!sach)$8kz2bpn1hx96y*$'
 
 DEBUG = True
 ALLOWED_HOSTS = ['*']
@@ -89,7 +89,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
-
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 # Login
 AUTH_USER_MODEL = 'core.Usuario'
 LOGIN_REDIRECT_URL = 'home'
