@@ -1,40 +1,44 @@
 from django.contrib import admin
-from django.contrib.auth.admin import UserAdmin
-from core.models import Curso, Aluno, Professor, Disciplina
 from django import forms
+from core.models import Curso,Aluno,Professor,Disciplina
+from django.contrib.auth.admin import UserAdmin
 
 class NovoAlunoForm(forms.ModelForm):
     class Meta:
         model = Aluno
-        fields = ('ra','email', 'nome','curso')
+        fields = ('ra', 'nome','curso')
 
     def save(self, commit=True):
-        user = super(NovoAlunoForm, self).save(commit=False)
-        user.set_password('123@mudar')
-        user.perfil = 'A'
+        user = super(NovoAlunoForm, self).save(commit = False)
+        user.set_password("123")
+        user.perfil = "A"
         if commit:
             user.save()
-        return user
+        return user        
 
 class AlterarAlunoForm(forms.ModelForm):
     class Meta:
         model = Aluno
-        fields = ('email', 'nome', 'curso')
+        fields = ( 'nome', 'curso')
 
 class AlunoAdmin(UserAdmin):
     form = AlterarAlunoForm
     add_form = NovoAlunoForm
-    list_display = ('ra', 'nome','email','curso')
+    list_display = ('ra','nome', 'curso')
     list_filter = ('perfil',)
-    fieldsets = ( (None, {'fields': ('ra', 'nome', 'email', 'curso')}),)
+    fieldsets = ( (None, {'fields': ('ra','nome', 'curso')}),)
     add_fieldsets = (
         (None, {
-             'fields': ('ra', 'nome', 'email', 'curso')
-            }),
-    )
+             'fields': ('ra','nome', 'curso')
+             }),
+        )
     search_fields = ('ra',)
-    ordering = ('nome',)
+    ordering = ('ra',)
     filter_horizontal = ()
+
+class CursoAdmin(admin.ModelAdmin):
+    list_display = ('nome','tipo','carga_horaria')
+    list_filter = ('tipo',)
 
 class NovoProfForm(forms.ModelForm):
     class Meta:
@@ -43,7 +47,7 @@ class NovoProfForm(forms.ModelForm):
             
     def save(self, commit=True):
         user = super(NovoProfForm, self).save(commit=False)
-        user.set_password('123@mudar')
+        user.set_password('123')
         user.perfil = 'P'
         if commit:
             user.save()
@@ -69,17 +73,13 @@ class ProfAdmin(UserAdmin):
     ordering = ('nome',)
     filter_horizontal = ()
 
-class CursoAdmin(admin.ModelAdmin):
-    list_display = ('nome','tipo','carga_horaria')
-    list_filter = ('tipo',)
-
 class DisciplinaAdmin(admin.ModelAdmin):
     list_display = ('nome','curso')
     list_filter = ('nome',)
 
-# Register your models here.
 
+# Register your models here.
+admin.site.register(Aluno,AlunoAdmin)
+admin.site.register(Curso,CursoAdmin)
 admin.site.register(Professor, ProfAdmin)
-admin.site.register(Curso, CursoAdmin)
-admin.site.register(Aluno, AlunoAdmin)
 admin.site.register(Disciplina, DisciplinaAdmin)

@@ -1,26 +1,24 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-    <head>
-        {% extends 'base.html' %}
+<html>
+<head>
         <meta charset="UTF-8">
-        {% block title %}Lista de Cursos.{% endblock %}
-    </head>
+        {% extends 'base.html' %}
+                {% block title %}Página do Aluno{% endblock %}
+                
+</head>
+<body>
     
         {% block main2 %}
-    <body>
-
-
-<tipo_curso><h1><center>Pagina perfil do Prfessor</center></h1>
-<center>
-    Ola,{{ User }}
-    <ul>
-        {% for curso in cursos %}
-        <a a href='/templates/detalhe_curso.html'class="link" class="{{ curso.classe }}">{{ curso.nome }} - {{ curso.tipo }}</a><br>
-        <br>
-        {% endfor %}
-    </ul>    
-</tipo_curso>
-    
-    {% endblock %}
+        <center>
+        <HP_comentario2><h2>Perfil Professor</h2></HP_comentario2>
+        Informações do usuário: <br>
+        Olá professor:{{ user.nome }} |<br>
+        RA:{{ user.ra }} |<br>
+        email:{{ user.email }} <br>
+        disciplina: {{ user.professor.disciplina }}<br>
+        </center>
+        <br><br>
+        {% endblock %}
+</form>
 </body>
-</html>
+</html> 
