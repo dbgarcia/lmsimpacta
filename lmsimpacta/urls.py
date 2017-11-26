@@ -15,21 +15,25 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from django.conf import settings
+from django.conf.urls.static import static
 from core.views import *
-from django.contrib.auth.views import login, logout
+from django.contrib.auth.views import login,logout
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', index),
-    url(r'index', index, name='home'),
-    url(r'disciplina',disciplina, name='disciplina'),
-    url(r'detalhe_curso',detalhe_curso, name='detalhe'),
-    url(r'noticias',noticias, name='noticias'),
-    url(r'lista_curso',lista_cursos, name='lista'),
-    url(r'contato',contato, name='contato'),
-    url(r'aluno',aluno, name='aluno'),
-    url(r'^login',login,{"template_name":"login.html"}, name='login'),
-    url(r'^logout',logout, name='logout'),
-    url(r'professor',professor, name='professor'),
-    
+    url(r'^$',index, name="home"),
+    url(r'^disciplina',disciplina),
+    url(r'^detalhe_curso',detalhe_curso),
+    url(r'^index',index),
+    url(r'^noticias',noticias),
+    url(r'^lista_curso',lista_cursos),
+    url(r'^contato',contato),
+    url(r'^entrar',login,{"template_name":"login.html"},name="login"),
+    url(r'^sair',logout,{"template_name":"logout.html"}),
+    url(r'^aluno',aluno, name='aluno'),
+    url(r'^professor',professor,name='professor'),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

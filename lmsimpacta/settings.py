@@ -1,27 +1,19 @@
-
+from os import path
 import os
 
-mysqlconnstr = os.environ['MYSQLCONNSTR_localdb']
-mysqlconnlst = mysqlconnstr.split(';')
-mysqlconndict = dict(s.split('=',1) for s in mysqlconnlst)
+#mysqlconnstr = os.environ['MYSQLCONNSTR_localdb']
+#mysqlconnlst = mysqlconnstr.split(';')
+#mysqlconndict = dict(s.split('=',1) for s in mysqlconnlst)
 
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
+PROJECT_ROOT = path.dirname(path.abspath(path.dirname(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'fv$s0od+^vue4(56$#4v5yg5vt2kqd%4%d*44d84)i$=ctiigg'
+SECRET_KEY = 'de-8hu051)wjdhzt_ag6i)ndpgbg!sach)$8kz2bpn1hx96y*$'
 
-# SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
-ALLOWED_HOSTS = [ '*' ]
-
-
-# Application definition
+ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -30,15 +22,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'core'
+    'core',
 ]
 
 MIDDLEWARE = [
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
@@ -63,25 +55,28 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'lmsimpacta.wsgi.application'
 
-
-# Database
-# https://docs.djangoproject.com/en/1.11/ref/settings/#databases
-
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': mysqlconndict['Database'],
-        'USER': mysqlconndict['User Id'],
-        'PASSWORD': mysqlconndict['Password'],
-        'HOST': mysqlconndict['Data Source'].split(':')[0],
-        'PORT': mysqlconndict['Data Source'].split(':')[1],
+        'default': {
+        'ENGINE': 'django.db.backends.mysql', 
+        'NAME': 'django_data',
+        'USER': 'root',
+        'PASSWORD':'',
+        'HOST': '127.0.0.1',
+        'PORT': '3306',        
     }
 }
 
 
-
-# Password validation
-# https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
+#DATABASES = {
+    #'default': {
+        #'ENGINE': 'django.db.backends.mysql',
+        #'NAME': mysqlconndict['Database'],
+        #'USER': mysqlconndict['User Id'],
+       # 'PASSWORD': mysqlconndict['Password'],
+        #'HOST': mysqlconndict['Data Source'].split(':')[0],
+        #'PORT': mysqlconndict['Data Source'].split(':')[1],
+    #}
+#}
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -98,26 +93,21 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
-# Internationalization
-# https://docs.djangoproject.com/en/1.11/topics/i18n/
-
 LANGUAGE_CODE = 'pt-br'
-
 TIME_ZONE = 'America/Sao_Paulo'
-
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+#STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
+#Fileupload
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 # Login
 AUTH_USER_MODEL = 'core.Usuario'
 LOGIN_REDIRECT_URL = 'home'
