@@ -87,7 +87,7 @@ class GradeCurricular(models.Model):
     curso = models.ForeignKey(
         Curso
     )
-    def __str__(self):
+    def __int__(self):
         return self.ano
 
 class Periodo(models.Model):
@@ -98,6 +98,8 @@ class Periodo(models.Model):
     curso = models.ForeignKey(
         Curso
     )
+    def __int__(self):
+        return self.numero
 
 class PeriodoDisciplina(models.Model):
       periodo = models.ForeignKey(
