@@ -114,3 +114,8 @@ EMAIL_HOST = 'smtps.bol.com.br'
 EMAIL_HOST_USER = 'webimpacta@bol.com.br'
 EMAIL_HOST_PASSWORD = '@WebProjeto'
 EMAIL_PORT = 587
+
+try:
+    from .local_settings import *
+except ImportError:
+    pass
