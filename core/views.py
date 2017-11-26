@@ -1,7 +1,11 @@
+from django.core.mail import send_mail
+from django.core.mail import BadHeaderError
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required, user_passes_test
 from core.models import Curso,Usuario,Disciplina
 from core.forms import ContatoForm,CursoForm
+from lmsimpacta.settings import *
 
 # Create your views here.
 def index(request):
@@ -37,10 +41,22 @@ def noticias(request):
 
 def contato(request):
     print(request.POST)
+
     if request.POST:
         form = ContatoForm(request.POST)
         if form.is_valid():
             form.envia_email()
+
+            assunto = request.POST.get("nome")
+            mensagem = request.POST.get("mensagem")
+            emailDestino = request.POST.get("email")
+            emailOrigem = EMAIL_HOST_USER
+
+            try:
+                send_mail(assunto, mensagem, emailOrigem, [emailDestino], fail_silently=True)
+            except BadHeaderError:
+                return HttpResponse("Header invalido ou nao encontrado!")
+
     else:
         form = ContatoForm()
 
