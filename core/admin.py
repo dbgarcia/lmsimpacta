@@ -1,7 +1,9 @@
-from django.contrib import admin
 from django import forms
-from core.models import Curso,Aluno
+from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
+
+from core.models import Curso,Aluno,Professor,Disciplina
+from .models import Post
 
 class NovoAlunoForm(forms.ModelForm):
     class Meta:
@@ -19,17 +21,18 @@ class NovoAlunoForm(forms.ModelForm):
 class AlterarAlunoForm(forms.ModelForm):
     class Meta:
         model = Aluno
-        fields = ( 'nome', 'curso')
+        fields = ( 'nome', 'curso','email')
 
 class AlunoAdmin(UserAdmin):
     form = AlterarAlunoForm
     add_form = NovoAlunoForm
-    list_display = ('ra','nome', 'curso')
+
+    list_display = ('ra','nome', 'curso','email')
     list_filter = ('perfil',)
-    fieldsets = ( (None, {'fields': ('ra','nome', 'curso')}),)
+    fieldsets = ( (None, {'fields': ('ra','nome', 'curso','email')}),)
     add_fieldsets = (
         (None, {
-             'fields': ('ra','nome', 'curso')
+             'fields': ('ra','nome', 'curso','email')
              }),
         )
     search_fields = ('ra',)
@@ -37,10 +40,42 @@ class AlunoAdmin(UserAdmin):
     filter_horizontal = ()
 
 class CursoAdmin(admin.ModelAdmin):
-    list_display = ('nome','tipo','carga_horaria')
-    list_filter = ('tipo',)
+    list_display = ('nome','tipo','carga_horaria','periodo')
+    list_filter = ('tipo','periodo')
 
+class NovoProfForm(forms.ModelForm):
+    class Meta:
+        model = Professor
+        fields = ('ra','nome', 'email', 'disciplina')
+            
+    def save(self, commit=True):
+        user = super(NovoProfForm, self).save(commit=False)
+        user.set_password('123')
+        user.perfil = 'P'
+        if commit:
+            user.save()
+        return user
 
-# Register your models here.
-admin.site.register(Aluno,AlunoAdmin)
-admin.site.register(Curso,CursoAdmin)
+class AlterarProfForm(forms.ModelForm):
+    class Meta:
+        model = Professor
+        fields = ('email', 'nome', 'disciplina','carga_horaria')
+
+class ProfAdmin(UserAdmin):
+    form = AlterarProfForm
+    add_form = NovoProfForm
+    list_display = ('ra', 'nome','apelido','email','disciplina','carga_horaria')
+    list_filter = ('perfil','apelido')
+    fieldsets = ( (None, {'fields': ('ra', 'nome','apelido', 'email', 'disciplina')}),)
+    add_fieldsets = (
+        (None, {
+             'fields': ('ra', 'nome','apelido', 'email', 'disciplina','carga_horaria')
+            }),
+    )
+    search_fields = ('ra','apelido')
+    ordering = ('nome',)
+    filter_horizontal = ()
+
+class DisciplinaAdmin(admin.ModelAdmin):
+    list_display = ('nome','curso')
+    list_filter = ('nome',)
