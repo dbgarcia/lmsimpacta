@@ -1,3 +1,4 @@
+from django import forms
 from django.contrib import admin
 from django import forms
 from core.models import Curso,Aluno,Professor,Disciplina,GradeCurricular,Periodo,PeriodoDisciplina,DisciplinaOfertada,Turma

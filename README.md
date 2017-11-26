@@ -66,4 +66,3 @@ $ git checkout [novaFuncaoDjango]
 $ git push origin [novaFuncaoDjango]
 ```
 
-
