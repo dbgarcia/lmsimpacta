@@ -1,37 +1,42 @@
 <!DOCTYPE html>
-
-<html lang="pt-br">
-
-    <head>
-        
-        {% extends 'base.html' %}
+<html>
+<head>
         <meta charset="UTF-8">
-        {% block title %}Lista de Cursos.{% endblock %}
-    </head>
+        {% extends 'base.html' %}
+                {% block title %}Página do Aluno{% endblock %}
+                
+</head>
+<body>
     
         {% block main2 %}
-    <body>
+        <center>
+                Informações do usuário: <br>
+                nome {{ user.nome }} |<br>
+                RA {{ user.ra }} |<br>
+                email:{{ user.email }} <br>
+                curso: {{ user.aluno.curso.sigla }}<br>
+                {% for disciplina in disciplinas  %}
+                <div>
+                        <h2>{{disciplina.nome}}</h2>
+                        <ul>
+                                {{% for questao in questoes %}} 
+                                <li>{{ questao }}</li> 
+                                {% empety %} 
+                                        <li>Essa disciplina ainda nao possuiu questão</li>
+                                {% endfor %} 
+                        </ul>
+                        <p alss = "acoes">
+                                <a href = "#">Adicionar Questao</a>
 
 
-<tipo_curso><h1><center>Pagina perfil de aluno</center></h1>
-<center>
-    
-    <p>
-        Informações do usuário:
-        <br>
-        nome {{  user.nome }}
-        |<br>
-        RA {{  user.ra }}
-        |<br>
-        email:{{ user.email }}
-        <br>
-        curso: {{ user.aluno.curso }}
-        
-        
-    </p> 
+                        </p>
 
-</tipo_curso>
-    
-    {% endblock %}
+                </div>
+                {% end for %}
+
+        </center>
+        <br><br>
+        {% endblock %}
+</form>
 </body>
-</html>
+</html> 

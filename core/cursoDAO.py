@@ -1,5 +1,5 @@
 
-from core.executorSQL import ExecutorSQL
+
 from core.models import Curso
 
 class CursoDAO():
@@ -12,7 +12,7 @@ class CursoDAO():
         # lista inicial
         cursos = []
 
-        query = 'SELECT * FROM core_curso'
+        query = 'SELECT * FROM curso'
         rows = ExecutorSQL().selectAll(query)
 
         for row in rows:
@@ -29,7 +29,7 @@ class CursoDAO():
         # lista inicial
         cursos = []
 
-        query = 'SELECT * FROM core_curso'
+        query = 'SELECT * FROM curso'
         row = ExecutorSQL().selectOne(query)
 
         curso = self.retornaCurso(row)
@@ -41,22 +41,22 @@ class CursoDAO():
 
     def insert(self, curso):
 
-        query = 'INSERT INTO core_curso (sigla, nome, tipo, carga_horaria, ativo, descricao, Matriz_Curricular) VALUES ("{0}", "{1}", "{2}", "{4}", "{5}", "{6}", "{7}")'.format(curso.sigla, curso.nome, curso.tipo, curso.carga_horaria, curso.ativo, curso.descricao, curso.matrizcurricular)
+        query = 'INSERT INTO curso (sigla, nome, tipo, carga_horaria, ativo, descricao, Matriz_Curricular) VALUES ("{0}", "{1}", "{2}", "{4}", "{5}", "{6}", "{7}")'.format(curso.sigla, curso.nome, curso.tipo, curso.carga_horaria, curso.ativo, curso.descricao, curso.matrizcurricular)
         ExecutorSQL().insert(query)
     
     def update(self, curso):
         
-        query = 'UPDATE core_curso SET sigla = "{0}", nome = "{1}", tipo = "{2}", carga_horaria = "{3}", ativo = "{4}", descricao = "{5}", Matriz_Curricular = "{6}"   WHERE NOME = "{0}"'.format(curso.sigla, curso.nome, curso.tipo, curso.carga_horaria, curso.ativo, curso.descricao, curso.matrizcurricular)
+        query = 'UPDATE curso SET sigla = "{0}", nome = "{1}", tipo = "{2}", carga_horaria = "{3}", ativo = "{4}", descricao = "{5}", Matriz_Curricular = "{6}"   WHERE NOME = "{0}"'.format(curso.sigla, curso.nome, curso.tipo, curso.carga_horaria, curso.ativo, curso.descricao, curso.matrizcurricular)
         ExecutorSQL().insert(query)
 
     def delete(self, curso):
 
-        query = 'DELETE FROM core_curso WHERE nome = {0}'.format(curso.nome)
+        query = 'DELETE FROM curso WHERE nome = {0}'.format(curso.nome)
         ExecutorSQL().delete(query)
 
     def deleteAll(self):
 
-        query = 'DELETE FROM core_curso'
+        query = 'DELETE FROM curso'
         ExecutorSQL().delete(query)
 
     def retornaCurso(self, row):
