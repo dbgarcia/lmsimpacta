@@ -10,7 +10,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'de-8hu051)wjdhzt_ag6i)ndpgbg!sach)$8kz2bpn1hx96y*$'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = {"*"}
 
@@ -54,14 +54,18 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'lmsimpacta.wsgi.application'
 
+mysqlconnstr = os.environ['MYSQLCONNSTR_localdb']
+mysqlconnlst = mysqlconnstr.split(';')
+mysqlconndict = dict(s.split('=',1) for s in mysqlconnlst)
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql', 
-        'NAME': 'localdb',
-        'USER': 'azure',
-        'PASSWORD': '6#vWHD_$',
-        'HOST': '127.0.0.1',
-        'PORT': '55081',
+        'NAME': mysqlconndict['Database'],
+        'USER': mysqlconndict['User Id'],
+        'PASSWORD': mysqlconndict['Password'],
+        'HOST': mysqlconndict['Data Source'].split(':')[0],
+        'PORT': mysqlconndict['Data Source'].split(':')[1],
     }
 }
 
