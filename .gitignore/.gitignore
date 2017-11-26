@@ -8,9 +8,17 @@ local_settings.py
 .DS_Store
 
 #
+*.pyc
 __pycache__/
 *.py[cod]
 *$py.class
+
+#
+lmsimpacta/*.pyc
+core/*.pyc
+core/__pycache__/
+core/migrations/
+
 
 # Distribution / packaging
 .Python
