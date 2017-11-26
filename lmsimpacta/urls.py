@@ -29,4 +29,6 @@ urlpatterns = [
     url(r'contato',contato),
     url(r'entrar',login,{"template_name":"login.html"},name="login"),
     url(r'sair',logout,{"template_name":"logout.html"}),
+    url(r'aluno',aluno),
+    url(r'professor',professor),
 ]

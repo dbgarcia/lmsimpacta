@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <meta charset="UTF-8">
+        {% extends 'base.html' %}
+                {% block title %}Página do Aluno{% endblock %}
+</head>
+<body>
+        {% block main %}
+        <ul class="menu_perfil">
+        <li><a href="#home">Boletim</a></li>
+        <li><a href="#news">Disciplinas</a></li>
+        <li><a href="#about">SmartClass</a></li>
+        </ul>
+        {% endblock %}
+
+
+
+        {% block main3 %}
+        <center>
+        <h1>
+        <perfil_font>
+        <p>Informações do usuário</p>
+        </h1></center></perfil_font>
+        
+        <perfil_font><h4>
+        Nome: {{ user.nome }}<br>
+        RA: {{ user.ra }} <br>
+        Email: {{ user.email }} <br>
+        Curso: {{ user.aluno.curso }}<br>
+        </perfil_font>
+        <br><br>
+        {% endblock %}
+
+        {% block main2 %}
+        <center>
+        <perfil_font><h1>
+        <p>Mural de Recados.</p></h1></perfil_font>
+        <perfil_font><h4>
+        {{ post.Titulo }}
+
+        </h4></perfil_font>
+        {% endblock %}
+</form>
+</body>
+</html> 

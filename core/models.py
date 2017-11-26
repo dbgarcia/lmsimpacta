@@ -1,5 +1,21 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser,BaseUserManager
+from django.utils import timezone
+
+
+class Post(models.Model):
+    Titulo = models.CharField(max_length=200)
+    Texto = models.TextField()
+    Data_Publicada = models.DateTimeField(
+            blank=True, null=True)
+
+    def publish(self):
+        self.Data_Publicada = timezone.now()
+        self.save()
+
+    def __unicode__(self):
+        return self.Titulo
+
 
 class UsuarioManager(BaseUserManager):
         use_in_migrations = True
@@ -20,11 +36,12 @@ class Usuario(AbstractBaseUser):
         nome = models.CharField(max_length=50)
         ra = models.IntegerField(unique=True)
         password = models.CharField(max_length=150)
+        email = models.CharField(max_length=100)
         perfil = models.CharField(max_length=1,default ='C')
         ativo = models.BooleanField(default=True)
 
         USERNAME_FIELD = 'ra'
-        REQUIRED_FIELDS = ['nome']
+        REQUIRED_FIELDS = ['nome','email']
 
         objects = UsuarioManager()
         
@@ -52,6 +69,7 @@ class Curso(models.Model):
         nome = models.CharField(max_length=200)
         tipo = models.CharField(max_length=50,blank=True)
         carga_horaria = models.IntegerField(default=1000)
+        periodo = models.CharField(max_length=20)
         ativo = models.BooleanField(default=True)
         descricao = models.TextField(blank=True)
         Matriz_Curricular = models.TextField(blank=True)
@@ -60,9 +78,24 @@ class Curso(models.Model):
                 return self.nome    
 
 class Aluno(Usuario):
-
         curso = models.ForeignKey(
                 Curso
-                )        
+                )
+
+class Disciplina(models.Model):
+    nome = models.CharField(max_length= 100)
+    curso = models.ForeignKey(
+        Curso
+    )
+    def __unicode__(self):
+        return self.nome
+
+class Professor(Usuario):
+        apelido = models.CharField(max_length=15)
+        carga_horaria = models.IntegerField()
+        disciplina = models.ForeignKey(
+                    Disciplina
+                    )
+
 # Create your models here.
  

@@ -1,6 +1,7 @@
 from django.shortcuts import render
-#from .forms import ContatoForm
-from core.models import Curso,Usuario
+from .forms import ContatoForm
+from django.contrib.auth.decorators import login_required, user_passes_test
+from core.models import Curso,Usuario,Disciplina
 from core.forms import ContatoForm,CursoForm
 
 # Create your views here.
@@ -21,7 +22,8 @@ def disciplina(request):
 
 def detalhe_curso(request):
     contexto={
-        "cursos":Curso.objects.all()
+        "cursos" : Curso.objects.all(),
+        "disciplina" : Disciplina.objects.all()
     }
     return render(request,"detalhe_curso.html",contexto)
 
@@ -60,8 +62,25 @@ def curso(request):
     else:
         form = CursoForm()
 
-    contexto = {
+    contexto = {    
         "form":form
     }
     return render(request,"curso.html",contexto)
 
+
+def checa_aluno(user):
+     return user.perfil == 'A'
+
+def checa_professor(user):
+     return user.perfil == 'P'
+
+@login_required(login_url='/login')
+@user_passes_test(checa_aluno, login_url='/?error=acesso', redirect_field_name=None)
+def aluno(request):
+    return render(request,"aluno.html")
+
+@login_required(login_url='/entrar')
+@user_passes_test(checa_professor, login_url='/?error=acesso', redirect_field_name=None)
+def professor(request):
+     return render(request,"professor.html")
+    

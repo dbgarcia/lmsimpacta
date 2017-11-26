@@ -104,7 +104,7 @@ ul.topnav {
 ul.topnav li {float: left;}
 
 ul.topnav li a {
-    display: block;
+    display: block; 
     color: white;
     text-align: center;
     padding: 14px 16px;
@@ -197,6 +197,29 @@ ul.topnav li a.active {background-color: #1f417b;}
 
   }
 
+ul.menu_perfil li a {
+    display: block;
+    color: #000;
+    padding: 8px 0 9px 2px;
+    text-decoration: none;
+    font-size:22px;
+    font-family:"Arial"
+}
+
+ul.menu_perfil {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    background-color: #f1f1f1;
+    padding-top:80px;
+}
+
+ul.menu_perfil li a:hover:not(.active) {
+    background-color: #555;
+    color: white;
+}
+
 @media (max-width: 870px) {
     .column.side, .column.middle {
         width: 100%;
@@ -207,4 +230,7 @@ ul.topnav li a.active {background-color: #1f417b;}
     ul.topnav li {float: none;}
     .header img{max-width: 100%;}
     ul.topnav li a {padding: 10px 16px;}
+    ul.menu_perfil {
+        padding-top:0px;
+        }
 }

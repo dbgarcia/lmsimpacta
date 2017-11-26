@@ -1,5 +1,5 @@
 """
-WSGI config for Impacta project.
+WSGI config for lmsimpacta project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
