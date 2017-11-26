@@ -1,12 +1,9 @@
-from django.contrib import admin
 from django import forms
-from core.models import Curso,Aluno,Professor,Disciplina
+from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 
-from django.contrib import admin
+from core.models import Curso,Aluno,Professor,Disciplina
 from .models import Post
-
-admin.site.register(Post)
 
 class NovoAlunoForm(forms.ModelForm):
     class Meta:
@@ -29,6 +26,7 @@ class AlterarAlunoForm(forms.ModelForm):
 class AlunoAdmin(UserAdmin):
     form = AlterarAlunoForm
     add_form = NovoAlunoForm
+
     list_display = ('ra','nome', 'curso','email')
     list_filter = ('perfil',)
     fieldsets = ( (None, {'fields': ('ra','nome', 'curso','email')}),)
@@ -81,10 +79,3 @@ class ProfAdmin(UserAdmin):
 class DisciplinaAdmin(admin.ModelAdmin):
     list_display = ('nome','curso')
     list_filter = ('nome',)
-
-
-# Register your models here.
-admin.site.register(Aluno,AlunoAdmin)
-admin.site.register(Curso,CursoAdmin)
-admin.site.register(Professor, ProfAdmin)
-admin.site.register(Disciplina, DisciplinaAdmin)

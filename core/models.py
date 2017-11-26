@@ -1,7 +1,6 @@
 from django.db import models
-from django.contrib.auth.models import AbstractBaseUser,BaseUserManager
 from django.utils import timezone
-
+from django.contrib.auth.models import AbstractBaseUser,BaseUserManager
 
 class Post(models.Model):
     Titulo = models.CharField(max_length=200)
@@ -15,7 +14,6 @@ class Post(models.Model):
 
     def __unicode__(self):
         return self.Titulo
-
 
 class UsuarioManager(BaseUserManager):
         use_in_migrations = True
@@ -35,10 +33,10 @@ class UsuarioManager(BaseUserManager):
 class Usuario(AbstractBaseUser):
         nome = models.CharField(max_length=50)
         ra = models.IntegerField(unique=True)
-        password = models.CharField(max_length=150)
-        email = models.CharField(max_length=100)
+        #password = models.CharField(max_length=150)
         perfil = models.CharField(max_length=1,default ='C')
         ativo = models.BooleanField(default=True)
+        email = models.CharField(max_length=100)
 
         USERNAME_FIELD = 'ra'
         REQUIRED_FIELDS = ['nome','email']
@@ -78,6 +76,7 @@ class Curso(models.Model):
                 return self.nome    
 
 class Aluno(Usuario):
+  
         curso = models.ForeignKey(
                 Curso
                 )
@@ -97,5 +96,6 @@ class Professor(Usuario):
                     Disciplina
                     )
 
-# Create your models here.
- 
+        curso = models.ForeignKey(
+                Curso
+                )        
