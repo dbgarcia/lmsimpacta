@@ -1,3 +1,4 @@
+
 from django.core.mail import send_mail
 from django.core.mail import BadHeaderError
 from django.http import HttpResponse, HttpResponseRedirect
@@ -43,10 +44,12 @@ def contato(request):
     print(request.POST)
 
     if request.POST:
-        form = ContatoForm(request.POST)
-        if form.is_valid():
-            form.envia_email()
 
+        form = ContatoForm(request.POST)
+
+        if form.is_valid():
+
+            form.envia_email()
             assunto = request.POST.get("nome")
             mensagem = request.POST.get("mensagem")
             emailDestino = request.POST.get("email")
@@ -56,7 +59,6 @@ def contato(request):
                 send_mail(assunto, mensagem, emailOrigem, [emailDestino], fail_silently=True)
             except BadHeaderError:
                 return HttpResponse("Header invalido ou nao encontrado!")
-
     else:
         form = ContatoForm()
 
@@ -82,6 +84,7 @@ def curso(request):
     }
     return render(request,"curso.html",contexto)
 
+
 def checa_aluno(user):
      return user.perfil == 'A'
 
@@ -97,4 +100,3 @@ def aluno(request):
 @user_passes_test(checa_professor, login_url='/?error=acesso', redirect_field_name=None)
 def professor(request):
      return render(request,"professor.html")
-
