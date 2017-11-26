@@ -54,14 +54,18 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'lmsimpacta.wsgi.application'
 
+mysqlconnstr = os.environ['MYSQLCONNSTR_localdb']
+mysqlconnlst = mysqlconnstr.split(';')
+mysqlconndict = dict(s.split('=',1) for s in mysqlconnlst)
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql', 
-        'NAME': 'localdb',
-        'USER': 'azure',
-        'PASSWORD': '6#vWHD_$',
-        'HOST': '127.0.0.1',
-        'PORT': '55081',
+        'NAME': mysqlconndict['Database'],
+        'USER': mysqlconndict['User Id'],
+        'PASSWORD': mysqlconndict['Password'],
+        'HOST': mysqlconndict['Data Source'].split(':')[0],
+        'PORT': mysqlconndict['Data Source'].split(':')[1],
     }
 }
 
