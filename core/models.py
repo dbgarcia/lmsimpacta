@@ -45,7 +45,10 @@ class Usuario(AbstractBaseUser):
             return self.nome
 
         def __str__(self):
-                return self.nome    
+            return self.nome
+
+        def __unicode__(self):
+            return unicode(self.nome) or u''  
             
 
 class Curso(models.Model):
@@ -56,6 +59,9 @@ class Curso(models.Model):
 
     def __str__(self):
         return self.nome
+
+    def __unicode__(self):
+        return unicode(self.nome) or u''
 
 
 class Aluno(Usuario):
@@ -80,6 +86,9 @@ class Disciplina(models.Model):
 
     def __str__(self):
         return self.nome
+       
+    def __unicode__(self):
+        return unicode(self.nome) or u''
 
 class GradeCurricular(models.Model):
     ano = models.SmallIntegerField()
@@ -123,6 +132,9 @@ class DisciplinaOfertada(models.Model):
     )
     def __str__(self):
         return self.ano
+       
+    def __unicode__(self):
+        return unicode(self.disciplina) or u''
 
 class Turma(models.Model):
       turno= models.CharField(max_length=15)
