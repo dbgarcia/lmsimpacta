@@ -18,6 +18,7 @@ lmsimpacta/local_settings.py
 lmsimpacta/*.pyc
 core/*.pyc
 core/__pycache__/
+lmsimpacta/__pycache__/
 core/migrations/
 
 
