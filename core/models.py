@@ -198,7 +198,7 @@ class CursoTurma(models.Model):
         return "{}".format(self.curso, self.turma)
  
 class Questao(models.Model):
-    numero = models.IntegerField("Número")
+    numero = models.IntegerField("Numero")
     data_limite_entrega = models.DateField("Entrega")
     descricao = models.TextField()
     data = models.DateField()
