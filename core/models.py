@@ -45,7 +45,10 @@ class Usuario(AbstractBaseUser):
             return self.nome
 
         def __str__(self):
-                return self.nome    
+            return self.nome
+
+        def __unicode__(self):
+            return unicode(self.nome) or u''  
             
 
 class Curso(models.Model):
@@ -56,6 +59,9 @@ class Curso(models.Model):
 
     def __str__(self):
         return self.nome
+
+    def __unicode__(self):
+        return unicode(self.nome) or u''
 
 
 class Aluno(Usuario):
@@ -94,6 +100,9 @@ class Disciplina(models.Model):
    
     def __str__(self):
         return self.nome
+
+    def __unicode__(self):
+        return unicode(self.nome) or u''
 
 class Periodo(models.Model):
     numero = models.SmallIntegerField(unique=True)
@@ -210,8 +219,3 @@ class ArquivoQuestao(models.Model):
 
     def __str__(self):
         return self.arquivo
-    
-
-
-# Create your models here.
- 

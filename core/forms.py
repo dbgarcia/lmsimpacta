@@ -14,11 +14,12 @@ class ContatoForm(forms.Form):
     mensagem = forms.CharField()
 
     def envia_email(self):
-        print("Email para você:\n"+
-        "Aluno: "+self.cleaned_data["nome"]+"\n"+
-        "Email: "+self.cleaned_data["email"]+"\n"+
-        "Mensagem: "+self.cleaned_data["mensagem"]
-        )
+
+        aluno = "Aluno: {0} \n".format(self.cleaned_data["nome"])
+        email = "Email: {0} \n".format(self.cleaned_data["email"])
+        mensagem = "Mensagem: {0} \n".format(self.cleaned_data["mensagem"])
+        texto = "Email para você: {0} \n".format(self.cleaned_data["nome"])
+        print("{0} {1} {2}, {3}".format(texto, aluno, email, mensagem))
 
 class QuestaoForm(forms.ModelForm):
     class Meta:

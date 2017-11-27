@@ -1,3 +1,4 @@
+from django import forms
 from django.contrib import admin
 from django import forms
 from core.models import Curso,Aluno,Professor,Disciplina,GradeCurricular,Periodo,PeriodoDisciplina,DisciplinaOfertada,Turma,Matricula,CursoTurma,Questao,ArquivoQuestao
@@ -77,8 +78,6 @@ class GradeCurricularAdmin(admin.ModelAdmin):
     list_display = ('ano', 'curso', 'semestre')
     list_filter = ('ano','semestre', 'curso')
     ordering = ('ano',)
-    
-    
 
 class DisciplinaAdmin(admin.ModelAdmin):
     list_display =('nome',)
