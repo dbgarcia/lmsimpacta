@@ -41,9 +41,11 @@ def noticias(request):
     return render(request,"noticias.html")
 
 def contato(request):
-    print(request.POST)
+
     if request.POST:
+        
         form = ContatoForm(request.POST)
+        
         if form.is_valid():
             
             form.envia_email()
@@ -106,7 +108,7 @@ def checa_professor(user):
 @user_passes_test(checa_aluno, login_url='aluno.html', redirect_field_name=None)
 def aluno(request):
     contexto={
-        "disciplina":Disciplina.objects.all() 
+        "disciplina": Disciplina.objects.all() 
     }
     
     return render(request, "aluno.html", contexto)
