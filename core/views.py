@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from .forms import ContatoForm
 from django.contrib.auth.decorators import login_required, user_passes_test
-from core.models import Curso,Usuario,Disciplina
-from core.forms import ContatoForm,CursoForm
+from core.models import Curso,Usuario,Disciplina,Questao,Turma
+from core.forms import ContatoForm,CursoForm,QuestaoForm
 
 # Create your views here.
 def index(request):
@@ -35,6 +35,20 @@ def lista_cursos(request):
 
 def noticias(request):
     return render(request,"noticias.html")
+
+def contato(request):
+    print(request.POST)
+    if request.POST:
+        form = ContatoForm(request.POST)
+        if form.is_valid():
+            form.envia_email()
+    else:
+        form = ContatoForm()
+
+    contexto = {
+        "form":form
+    }
+    return render(request,"contato.html",contexto)
 
 def contato(request):
     print(request.POST)
@@ -90,4 +104,20 @@ def professor(request):
         "cursos":Curso.objects.all() 
     }
     return render(request,"professor.html", contexto)
+
+def questao_form(request):
+    
+    if request.POST:
+        
+        form = QuestaoForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+    else:
+        
+        form = QuestaoForm()
+
+    contexto = {
+        "form":form
+    }
+    return render(request,"questao_form.html",contexto)
     

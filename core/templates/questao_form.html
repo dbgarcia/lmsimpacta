@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}Contato.{% endblock %}
+
+{% block main2 %}
+<center>
+        <h1>Questão</h1>
+        <form method="POST" action="" enctype="multipart/form-data" >
+                {{ form.as_p }}
+                {% csrf_token %}
+                
+            <button type="submit" class="butcont" >Enviar</button>
+            
+        </form>
+</center>
+
+{% endblock %}        

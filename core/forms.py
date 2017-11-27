@@ -22,5 +22,5 @@ class ContatoForm(forms.Form):
 
 class QuestaoForm(forms.ModelForm):
     class Meta:
-        model = Curso
-        fields = "__all__"
+        model = Questao
+        exclude = []

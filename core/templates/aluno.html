@@ -15,24 +15,6 @@
                 RA {{ user.ra }} |<br>
                 email:{{ user.email }} <br>
                 curso: {{ user.aluno.curso.sigla }}<br>
-                {% for disciplina in disciplinas  %}
-                <div>
-                        <h2>{{disciplina.nome}}</h2>
-                        <ul>
-                                {{% for questao in questoes %}} 
-                                <li>{{ questao }}</li> 
-                                {% empety %} 
-                                        <li>Essa disciplina ainda nao possuiu questão</li>
-                                {% endfor %} 
-                        </ul>
-                        <p alss = "acoes">
-                                <a href = "#">Adicionar Questao</a>
-
-
-                        </p>
-
-                </div>
-                {% end for %}
 
         </center>
         <br><br>
