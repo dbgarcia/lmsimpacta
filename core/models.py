@@ -209,6 +209,9 @@ class Questao(models.Model):
     def __str__(self):
         return "{}".format(self.numero)
 
+    def __unicode__(self):
+        return unicode(self.descricao) or u''
+
 class ArquivoQuestao(models.Model):
     arquivo = models.CharField(max_length=500)
     questao = models.ForeignKey(
