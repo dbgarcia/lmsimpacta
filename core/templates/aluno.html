@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         {% extends 'base.html' %}
                 {% block title %}Página do Aluno{% endblock %}
+                
 </head>
 <body>
     
@@ -13,13 +14,11 @@
                 nome {{ user.nome }} |<br>
                 RA {{ user.ra }} |<br>
                 email:{{ user.email }} <br>
-                curso: {{ user.aluno.curso }}<br>
-
+                curso: {{ user.aluno.curso.sigla }}<br>
 
         </center>
         <br><br>
         {% endblock %}
-
 </form>
 </body>
 </html> 

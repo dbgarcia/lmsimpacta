@@ -1,4 +1,3 @@
-
 from os import path
 import os
 
@@ -99,17 +98,16 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+#STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+#Fileupload
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 
 # Login
 AUTH_USER_MODEL = 'core.Usuario'
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
-
-
-#login
-AUTH_USER_MODEL = 'core.Usuario'
-LOGIN_REDIRECT_URL = "home"
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 

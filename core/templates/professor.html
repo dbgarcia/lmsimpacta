@@ -18,6 +18,22 @@
         disciplina: {{ user.professor.disciplina }}<br>
         </center>
         <br><br>
+
+        {% for curso in cursos%}
+        <div>
+                <h2>{{ curso.nome }}</h2>
+                <ul>
+                        {% for questao in questoes %}
+                                <li>{{ questao }}</li>
+                        {% empty %}
+                        <li>Curso ainda nao possui questao</li>
+                        {% endfor %}
+                </ul>
+                <p class "acoes">
+                        <a href="questao_form.html">Adicionar Questao</a>
+                </p>
+                {% endfor%}
+        </div>
         {% endblock %}
 </form>
 </body>
