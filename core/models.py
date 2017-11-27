@@ -198,7 +198,7 @@ class CursoTurma(models.Model):
         return "{}".format(self.curso, self.turma)
  
 class Questao(models.Model):
-    numero = models.IntegerField("Número")
+    numero = models.IntegerField("Numero")
     data_limite_entrega = models.DateField("Entrega")
     descricao = models.TextField()
     data = models.DateField()
@@ -208,6 +208,9 @@ class Questao(models.Model):
 
     def __str__(self):
         return "{}".format(self.numero)
+
+    def __unicode__(self):
+        return unicode(self.descricao) or u''
 
 class ArquivoQuestao(models.Model):
     arquivo = models.CharField(max_length=500)
