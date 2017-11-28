@@ -26,13 +26,10 @@ class QuestaoForm(forms.ModelForm):
         model = Questao
         exclude = ['descricao']
 
+
 class MatriculaForm(forms.ModelForm):
     class Meta:
         model = Matricula
-        exclude = ['descricao']
 
 
-      
-       
-    
 
