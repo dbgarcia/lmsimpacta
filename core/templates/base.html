@@ -27,7 +27,7 @@
 	    <li><a href="/templates/noticias.html">Noticias</a></li>
             {% if not user.is_authenticated %}
             <li class="dropdown">
-                <li><a href="/entrar">Login</a></li>
+		<a href="/entrar">Login</a>
                 {% else %}
                 {% if user.perfil == 'A' %}
                 <li><a class="link_nav" href="/aluno.html">Olá {{ user }} !</a></li>
