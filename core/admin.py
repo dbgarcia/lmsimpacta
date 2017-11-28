@@ -1,7 +1,8 @@
 from django import forms
 from django.contrib import admin
 from django import forms
-from core.models import Curso,Aluno,Professor,Disciplina,GradeCurricular,Periodo,PeriodoDisciplina,DisciplinaOfertada,Turma,Matricula,CursoTurma,Questao,ArquivoQuestao
+from core.models import Curso, Aluno, Professor, Disciplina, GradeCurricular, Periodo, PeriodoDisciplina, DisciplinaOfertada, Turma, Matricula, CursoTurma, Questao, ArquivoQuestao
+from core.models import Boletim
 from django.contrib.auth.admin import UserAdmin
 
 class NovoAlunoForm(forms.ModelForm):
@@ -109,7 +110,11 @@ class ArquivoQuestaoAdmin(admin.ModelAdmin):
     list_display = ('arquivo',)
     list_filter = ('arquivo',)
     ordering = ('arquivo',)
- 
+    
+class BoletimAdmin(admin.ModelAdmin):
+    list_display = ( 'nota_prova', 'nota_trabalho', 'disciplina', 'turma', 'aluno' )
+    list_filter = ( 'aluno', 'disciplina', 'turma' )
+    ordering = ( 'aluno', 'disciplina', 'turma' ) 
    
 # Register your models here.  
 admin.site.register(Aluno,AlunoAdmin)
@@ -125,3 +130,4 @@ admin.site.register(Matricula)
 admin.site.register(CursoTurma)
 admin.site.register(Questao, QuestaoAdmin)
 admin.site.register(ArquivoQuestao,ArquivoQuestaoAdmin)
+admin.site.register(Boletim, BoletimAdmin)
