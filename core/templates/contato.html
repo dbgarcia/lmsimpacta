@@ -16,6 +16,17 @@
                 <textarea name="mensagem" rows="5" cols="40"></textarea><br>
                 <br>
                 <center><button type="submit" class="butcont" >Enviar</button></center>
+                {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                    <!-- <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li> -->
+                        <script>
+                        alert('{{ message }}');
+                        </script>
+
+                    {% endfor %}
+                </ul>
+                {% endif %}
             </descricao_curso>
         </form>
 </center>
