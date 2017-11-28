@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <meta charset="UTF-8">
+        {% extends 'base.html' %}
+                {% block title %}Login.{% endblock %}
+                
+</head>
+<body>
+    
+        {% block main2 %}
+        <center>
+        <HP_comentario2><h2>Login</h2></HP_comentario2>
+        <form method="POST" class="form">
+                {% csrf_token %}
+                <descricao_curso>
+                {{form.as_p}}
+                <input type="submit" value="Entrar" class="butlog" />
+                <descricao_curso>
+        </center>
+        <br><br>
+        {% endblock %}
+</form>
+</body>
+</html> 

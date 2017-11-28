@@ -1,0 +1,219 @@
+.login{
+	text-align: center;
+	font-family: 'Verdana', 'Geneva', 'Tahoma', 'sans-serif';
+		
+}
+
+nome_mural{
+	text-align: center;
+	font-family: 'Arial';
+	font-size: 16px;
+	text-decoration: underline;
+}
+
+txt_mural{
+	text-align: center;
+	font-family: 'verdana';
+	font-size: 16px;
+	text-decoration: none;
+}
+    
+
+body{
+	margin:0;
+	background-color: #e2dede;
+	height:100%;
+	margin: 0;
+	padding: 0;
+	}
+
+li.graduacao{
+	background-color:#333;
+}
+li.pgraduacao{
+	background-color: #8e8888
+}
+a.classe1:link{
+	position: relative;
+}
+a.classe1:link,a.classe1:visited{
+	background-color: #3278b4;
+    color: white;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+a.classe1:hover,a.classe1:active{
+	background-color: #2e6da4;
+}
+.footer {
+	position: relative;
+  	padding: 20px;
+  	background-color: #1f3867;
+  	left:0px;
+  	right: 0px;
+  	bottom: 0px;
+  	text-align: center;
+}
+.header{
+	background-color: #273e6b;
+	border-bottom: 2px solid black;
+	height:250px;
+	width:100%;
+}
+
+.titulo {font-family:"Verdana";
+			font-size: 40px;
+			position:absolute;
+			top: 120px;
+			left: 30%;
+		}
+.corpo{
+	margin:auto;
+	width: 960px;
+}
+.link_nav{
+	margin-top:10px;}
+
+.FIT_LOGO{
+    float:left;
+    margin-top:80px;
+	margin-left:13%;
+	width:150px;
+	height:150px;
+}
+ul.topnav {
+    list-style-type: none;
+    margin-top:0px;
+    padding-top: 0px;
+    overflow: hidden;
+    background-color: #333;
+    position: fixed;
+    top:0;
+    width: 100%;
+    border-bottom: 2px solid black;
+    opacity: 0.9;
+    padding-left: 0px;
+    z-index: 10;
+}
+
+ul.topnav li {
+	float: left;
+}
+
+ul.topnav li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    font-family: "Verdana";
+    text-decoration: none;
+}
+
+ul.topnav li a:hover:not(.active) {
+	background-color: #455a82;
+}
+
+ul.topnav li a.active {
+	background-color: #4CAF50;
+}
+
+ul.topnav li.left {
+	float: left;
+}
+
+@media screen and (max-width: 822px){
+	ul.topnav{
+		position: relative;
+		opacity: 1;
+		margin-bottom: 0px;
+	}
+	.header{
+		position: relative;
+		height: 200px;
+	}
+	.FIT_LOGO{
+		margin-top: 20px;
+	}
+	.titulo{
+		font-size: 30px;
+		top: 50px;
+		left: 300px;
+	}
+}
+
+@media screen and (max-width: 740px)
+{
+	ul.topnav li.right, 
+	ul.topnav li {float: none;}
+	ul.topnav{
+		width: 100%;
+	}
+	body{width:100%}
+	.header{
+		position: relative;
+		top: 0px;
+		width: 100%;
+	}
+	.corpo{
+		position: relative;
+		top: 100%;
+		width: 100%;
+		border-left: 0px;
+		margin-left: 91px;
+	}
+	.titulo{
+		position: absolute;
+		font-size: 30px;
+		top: 55px;
+		left: 45%;
+		z-index: 0
+	}
+}
+
+texto_homepage{
+	padding: 0px 30px 0px;
+	font-family: "Arial";
+	font-size: 20px;
+	}
+
+HP_comentario{font-family:"Verdana";
+	text-decoration: underline;
+}	
+HP_comentario2{
+		font-family:"Verdana";
+		font-size: 20px;
+		font-weight: bold;
+		text-align:center;
+
+}
+
+.link {color: #000000;
+	text-decoration:underline;
+	font-family: "Verdana";
+	font-size: 24px;
+}
+
+lista_cursos{
+font-family:"Verdana";
+font-size:20px;	
+}
+
+nomecurso{
+	font-family: "Arial";
+	text-decoration:underline;
+	font-size:28px;
+}
+
+descricao_curso{
+	font-size:18px;
+	font-family:"Verdana";
+	color:#343432;
+	
+}
+
+noticia{
+	font-size: 16px;
+	font-family: "Verdana";
+}

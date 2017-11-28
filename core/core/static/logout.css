@@ -1,0 +1,33 @@
+body{
+    background-image: url("/static/home-bg.jpg");
+}
+.inner{
+    margin-left: auto;
+	margin-top: 170px;
+    margin-right: auto;
+    max-width: 412px;
+    padding: 55px;
+    background-color: #fff;
+    font-family: verdana;
+    font-size: 40px;
+    box-shadow: 10px 10px 100px #888888;
+    border-radius: 52px;
+	}
+.button {
+	background-color: #1f417b;
+	border: none;
+	color: white;
+    padding: 20px;
+	text-align: center;
+    font-size: 16px;
+	margin: 4px 2px;
+	cursor: pointer;
+    border-radius: 12px;
+    transition-duration: 0.4s;
+    text-decoration: none;
+    margin-left: 80px;
+	}
+.button:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),
+    0 17px 50px 0 rgba(0,0,0,0.19);
+}

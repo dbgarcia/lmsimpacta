@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        {% extends 'base.html' %}
+        <meta charset="UTF-8">
+        {% block title %} Boletim {% endblock %}
+        <style>
+        
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        </style>
+        
+        
+    </head>
+    
+        {% block main2 %}
+    <body>
+        <lista_cursos>
+            <h1><center> Boletim </center></h1>
+
+            <div align="center" > <center>
+                <table border="1" style="width:100%">
+
+
+                    <td align="center" colspan="5" height="40"> {{ boletins.0.aluno }} </td>    
+                        <tr>
+                           
+                        <th>Disciplina</th>
+                        <th>Nota Trabalho</th>
+                        <th>Nota Prova</th>
+                        <th>Media</th>
+                        <th>Situacao</th>
+                        </tr>
+
+                        {% for boletim in boletins %}
+                        
+                            {% for disciplina in disciplinas %}
+
+                        <tr>
+
+                            <td align="center"> {{ disciplina.nome  }}  </td>
+                            
+                            {% endfor %}
+                        
+                            <td align="center"> {{ boletim.nota_trabalho  }} </td>
+                            <td align="center"> {{ boletim.nota_prova  }} </td>
+
+                            
+                            <td align="center"> {{ medias }} </td>
+                            <th align="center"> {{ situacao }} </th>
+                        
+                        </tr>
+
+                    </tr>
+                        {% endfor %}
+
+
+                </table>    
+                
+
+                </div>
+                </center>
+
+                <br/>
+                <br/>
+     
+            </lista_cursos>
+        {% endblock %}
+    </body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        {% extends 'base.html' %}
+        <meta charset="UTF-8">
+        {% block title %}Lista de Cursos.{% endblock %}
+    </head>
+    
+        {% block main2 %}
+    <body>
+        <lista_cursos>
+            <h1><center>Lista de Cursos.</center></h1>
+            <center>
+                <ul>
+                    {% for curso in cursos %}
+                    <a a href='/detalhe_curso.html'class="link" class="{{ curso.classe }}">{{ curso.nome }} - {{ curso.tipo }}</a><br>
+                    <br>
+                    {% endfor %}
+                </ul>
+            </lista_cursos>
+        {% endblock %}
+    </body>
+</html>

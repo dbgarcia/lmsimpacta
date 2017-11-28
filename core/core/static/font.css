@@ -1,0 +1,82 @@
+nome_mural{
+	text-align: center;
+	font-family: 'Arial';
+	font-size: 16px;
+	text-decoration: underline;
+}
+.titulo {
+	font-family:"Verdana";
+	font-size: 40px;
+}
+txt_mural{
+	text-align: center;
+	font-family: 'verdana';
+	font-size: 16px;
+	text-decoration: none;
+}
+HP_comentario{font-family:"Verdana";
+	text-decoration: underline;
+}	
+HP_comentario2{
+		font-family:"Verdana";
+		font-size: 20px;
+		font-weight: bold;
+		text-align:center;
+
+}
+texto_homepage{
+	font-family: "Arial";
+	font-size: 20px;
+	}
+.link {color: #000000;
+	text-decoration:underline;
+	font-family: "Verdana";
+	font-size: 24px;
+}
+lista_cursos{
+font-family:"Verdana";
+font-size:20px;	
+}
+nomecurso{
+	font-family: "Arial";
+	text-decoration:underline;
+	font-size:28px;
+}
+descricao_curso{
+	font-size:18px;
+	font-family:"Verdana";
+	color:#343432;
+}
+
+noticia{
+	font-size: 16px;
+	font-family: "Verdana";
+}
+li.graduacao{
+	background-color:#333;
+}
+li.pgraduacao{
+	background-color: #8e8888
+}
+a.classe1:link{
+	position: relative;
+}
+a.classe1:link,a.classe1:visited{
+	background-color: #3278b4;
+    color: white;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+a.classe1:hover,a.classe1:active{
+	background-color: #2e6da4;
+}
+footer_font{
+	font-family:sans-serif;
+	font-size:18px;
+}
+perfil_font{
+	font-family:"Verdana";
+	color:#343432;
+}

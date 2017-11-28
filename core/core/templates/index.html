@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		{% extends 'base.html' %}
+		{% block title %}
+		Home.
+		{% endblock %}
+	</head>
+
+    {% block main %}
+	
+	<body>
+		</ul>
+ <center>
+		<texto_homepage>
+		<br><br>
+			{% if usuario %}
+				<p><h2>Olá {{ usuario.nome }},
+				<br>tudo bem?
+				<br>Gostaria de um café?</h2></p>
+			{% endif %}
+		</texto_homepage>	
+
+		<txt_mural>
+			{% if usuario %}
+				{% if perfil == 'aluno' %}
+				<nome_mural><h2><p>Conteúdo para Alunos</p></h2></nome_mural>
+
+					<texto_homepage>
+						<p>bláblábláblábláblábláblá</p>
+					</texto_homepage>
+
+				{% elif perfil == 'professor' %}
+				<nome_mural><h2><p>Conteúdo para Professores</p></h2></nome_mural>
+
+					<texto_homepage>
+						<p>bláblábláblábláblábláblá</p>
+					</texto_homepage>
+
+				{% else %}
+				<nome_mural><h2><p>Conteúdo para Coordenadores</p></h2></nome_mural>
+					
+					<texto_homepage>
+						<p>bláblábláblábláblábláblá</p>
+					</texto_homepage>					
+					
+				{% endif %}	
+			{% endif %}		
+		</txt_mural>
+</center>
+	{% endblock %}
+	{% block main2 %}
+			<center><h1><tipo_curso>Sobre a Impacta</tipo_curso></h1></center>
+			<center><img src="/static/campus-barra-funda.jpg" width="460" height="345" ></center>
+<div><center>
+<p><texto_homepage>Fundada em 2003, a Faculdade Impacta Tecnologia começou a funcionar com cursos noturnos voltados a área de tecnologia da informação. 
+Localizada em um edifício de médio porte, construído para uso educacional, no bairro da Vila Clementino, próximo ao Metrô Santa Cruz, de onde originou o nome do campus</texto_homepage><br>
+<texto_homepage>No ano de 2007, foi considerada "uma das seis melhores parceiras acadêmicas" da TCS, umas das maiores empresas do mundo na área de tecnologia da informação.</texto_homepage><br>
+<texto_homepage>Em 2009, a faculdade realizou intercâmbios internacionais em parceria com duas universidades norte americanas: o CCC&TI e a ASU (Appalachian State University).</texto_homepage><br>
+<texto_homepage>No início dos anos 2010, devido a grande procura, a faculdade abriu mais duas pequenas unidades para dar suporte aos cursos de pós-graduação, sendo uma unidade próxima ao campus principal e outra unidade próximo ao Metrô Consolação.</texto_homepage><br>
+<texto_homepage>Em 2011 e 2012, a faculdade teve seus cursos reconhecidos pelo MEC.Em agosto de 2014, o campus Metrô Santa Cruz e toda a estrutura da faculdade foram transferidos para o bairro da Barra Funda, na zona oeste da capital. A antiga unidade principal e todas as unidades auxiliares foram fechadas, sendo concentrado tudo na nova sede.</texto_homepage><br>
+<texto_homepage>De acordo com a diretoria da faculdade, o novo campus é três vezes maior que a antiga estrutura da instituição, com capacidade para atender até 20 mil estudantes.</texto_homepage></p>
+</center></div>
+
+<br><br><br>
+<div>
+<HP_comentario><h2><center>Comentarios de Ex-Alunos.</center></h2></HP_comentario>
+</div>
+<br>
+<div>
+<HP_comentario2><center>
+<p>Anderson - "Faculdade exelente!"</p>
+<p>Carlos - "Aprendi muito durante o curso, demais!"</p>
+<p>Helena - "Ótimas aulas e professores."</p>
+<p>Andreia - "Me formei e ja quero voltar."</p>
+<p>Marcos- "Ótimos professores, aprendi com facilidade."</center></p>
+</center>
+</HP_comentario2></div>
+<br><br><br>
+{% endblock %}
+
+</body>
+</html>
