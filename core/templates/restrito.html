@@ -1,0 +1,21 @@
+    {% extends 'base.html' %}
+    {% block title %}Área Restrita.{% endblock %}
+    
+    {% block main %}
+            <h1>Área Restrita</h1>
+            {% for curso in cursos %}
+            <div>
+                <h2>{{ curso.nome }}</h2>
+                <ul>
+                    {% for questao in questoes %}
+                        <li>{{ questao }} </li>
+                    {% empty %}
+                        <li>Esse curso nao tem nada</li>
+                    {% endfor %}
+                </ul>
+            <p class="acoes">
+                <a href="{% url 'questao_form' %}">Adicionar Questaão</a>
+            </p>
+            </div>
+            {% endfor %}
+    {% endblock %}        
