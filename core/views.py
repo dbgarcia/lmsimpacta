@@ -55,7 +55,7 @@ def contato(request):
             emailOrigem = EMAIL_HOST_USER
             
             send_mail(assunto, mensagem, emailOrigem, [emailDestino], fail_silently=True)
-            messages.success(request, 'Enviado Com Sucesso!')
+#             messages.success(request, 'Enviado Com Sucesso!')
     else:
         form = ContatoForm()
         # messages.warning(request, 'Informacoes nao sao validas!')
