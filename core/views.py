@@ -2,10 +2,10 @@ from django.contrib import messages
 from django.core.mail import send_mail
 from django.core.mail import BadHeaderError
 from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required, user_passes_test
-from core.models import Curso, Usuario, Disciplina, Questao, Turma, Boletim
-from core.forms import ContatoForm, CursoForm, QuestaoForm
+from core.models import Curso, Usuario, Disciplina, Questao, Turma, Boletim,Matricula
+from core.forms import ContatoForm, CursoForm, QuestaoForm,MatriculaForm,ContatoForm
 from lmsimpacta.settings import *
 
 # Create your views here.
@@ -138,15 +138,44 @@ def questao_form(request):
     
     if request.POST:
         
-        form = QuestaoForm(request.POST, request.FILES)
+        
+        form = QuestaoForm(request.POST, request.FILES,)
         if form.is_valid():
             form.save()
+            return redirect("/professor.html")
     else:
         
         form = QuestaoForm()
+        
 
     contexto = {
         "form":form
     }
     return render(request,"questao_form.html",contexto)
-    
+
+
+def matricula(request):
+    if request.POST:
+        
+        
+        form = MatriculaForm(request.POST, request.FILES,)
+        if form.is_valid():
+            form.save()
+            
+    else:
+        
+        form = MatriculaForm()
+        
+
+    contexto = {
+        "form":form
+    }
+    return render(request,"matricula.html",contexto)
+
+def consulta_matricula(request):
+    matricula = Matricula.objects.all()   
+
+    contexto = {
+        "matricula":matricula
+    }
+    return render(request,"consulta_matricula.html",contexto)
