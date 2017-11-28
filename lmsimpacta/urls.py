@@ -20,8 +20,8 @@ urlpatterns = [
     url(r'sair',logout,{"template_name":"logout.html"}),
     url(r'aluno', aluno),
     url(r'professor',professor),
-#     url(r'boletim',boletim),
+    url(r'boletim',boletim),
 ]
 
-# if settings.DEBUG:
-#     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
