@@ -19,24 +19,23 @@
             <img src="/static/impacta1.png">
         </div>            
         <ul class="topnav">
-            <li><a class="active" href="/templates/index.html">Home</a></li>
-            <li><a href="/templates/lista_cursos.html">Lista de Cursos</a></li>
-            <li><a href="/templates/detalhe_curso.html ">Detalhes de Cursos</a></li>
-            <li><a href="/templates/disciplina.html">Disciplinas</a></li>
-            <li><a href="/templates/contato.html">Contato</a></li>  
+            <li><a class="active" href="/index.html">Home</a></li>
+            <li><a href="/lista_cursos.html">Lista de Cursos</a></li>
+            <li><a href="/detalhe_curso.html ">Detalhes de Cursos</a></li>
+            <li><a href="/disciplina.html">Disciplinas</a></li>
+            <li><a href="/noticias.html">Noticias</a></li>
+            <li><a href="/contato.html">Contato</a></li>
+            <li><a href="#">Sobre</a></li>  
             {% if not user.is_authenticated %}
             <li class="dropdown">
-		<li><a href="/templates/noticias.html">Noticias</a></li>
-		<li><a href="#">Sobre</a></li>
-                <li><a href="/entrar">Login</a></li>
+                <a href="/entrar">Login</a>
                 {% else %}
                 {% if user.perfil == 'A' %}
-                <li><a class="link_nav" href="/aluno.html">Olá {{ user }} !</a></li>
-		<li><a href="/boletim.html">Boletim</a></li>
+                <li><a class="link_nav" href="/aluno.html">Área do Aluno</a></li>
                 <li><a class="link_nav" href="/sair">Logout</a></li>
                 {% else %}
                 {% if user.perfil == 'P' %}
-                <li><a class="link_nav" href="/professor.html">Olá {{ user }} !</a></li>
+                <li><a class="link_nav" href="/professor.html">Área do Professor</a></li>
                 <li><a href="/sair">Logout</a></li>
                 {% else %}
                 {% if user.perfil == 'C' %}
@@ -49,7 +48,8 @@
             </li>
 			{% endif %}
         </ul>
-                        
+              
+                  
         <div class="row">
 
             <div class="column side">                                 

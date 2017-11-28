@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from django import forms
-from core.models import Curso,Questao,Matricula
+from core.models import Curso,Questao
 
 class CursoForm(forms.ModelForm):
     class Meta:
@@ -24,15 +24,4 @@ class ContatoForm(forms.Form):
 class QuestaoForm(forms.ModelForm):
     class Meta:
         model = Questao
-        exclude = ['descricao']
-
-class MatriculaForm(forms.ModelForm):
-    class Meta:
-        model = Matricula
-        exclude = ['descricao']
-
-
-      
-       
-    
-
+        exclude = []

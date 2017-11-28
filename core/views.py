@@ -2,10 +2,10 @@ from django.contrib import messages
 from django.core.mail import send_mail
 from django.core.mail import BadHeaderError
 from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from django.contrib.auth.decorators import login_required, user_passes_test
-from core.models import Curso, Usuario, Disciplina, Questao, Turma, Boletim,Matricula
-from core.forms import ContatoForm, CursoForm, QuestaoForm,MatriculaForm,ContatoForm
+from core.models import Curso, Usuario, Disciplina, Questao, Turma, Boletim
+from core.forms import ContatoForm, CursoForm, QuestaoForm
 from lmsimpacta.settings import *
 
 # Create your views here.
@@ -118,7 +118,7 @@ def checa_professor(user):
      return user.perfil == 'P'
 
 @login_required(login_url='/Entrar')
-@user_passes_test(checa_aluno, login_url='aluno.html', redirect_field_name=None)
+@user_passes_test(checa_aluno, login_url='/permission', redirect_field_name=None)
 def aluno(request):
     contexto={
         "disciplina": Disciplina.objects.all() 
@@ -127,7 +127,7 @@ def aluno(request):
     return render(request, "aluno.html", contexto)
 
 @login_required(login_url='/entrar')
-@user_passes_test(checa_professor, login_url='/?error=acesso', redirect_field_name=None)
+@user_passes_test(checa_professor, login_url='/permission', redirect_field_name=None)
 def professor(request):
     contexto={
         "cursos":Curso.objects.all() 
@@ -138,44 +138,19 @@ def questao_form(request):
     
     if request.POST:
         
-        
-        form = QuestaoForm(request.POST, request.FILES,)
+        form = QuestaoForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return redirect("/professor.html")
     else:
         
         form = QuestaoForm()
-        
 
     contexto = {
         "form":form
     }
     return render(request,"questao_form.html",contexto)
+    
+def permission(request):
+    return render(request,"permission.html")
 
 
-def matricula(request):
-    if request.POST:
-        
-        
-        form = MatriculaForm(request.POST, request.FILES,)
-        if form.is_valid():
-            form.save()
-            
-    else:
-        
-        form = MatriculaForm()
-        
-
-    contexto = {
-        "form":form
-    }
-    return render(request,"matricula.html",contexto)
-
-def consulta_matricula(request):
-    matricula = Matricula.objects.all()   
-
-    contexto = {
-        "matricula":matricula
-    }
-    return render(request,"consulta_matricula.html",contexto)

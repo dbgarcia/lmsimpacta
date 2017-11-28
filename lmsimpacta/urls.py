@@ -5,7 +5,7 @@ from django.contrib import admin
 from core.views import *
 from django.conf import settings		
 from django.conf.urls.static import static
-from django.contrib.auth.views import login,logout
+from django.contrib.auth.views import login,logout,password_change,password_change_done
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -21,9 +21,16 @@ urlpatterns = [
     url(r'aluno', aluno),
     url(r'professor',professor),
     url(r'boletim',boletim),
-    url(r'^questao_form',questao_form,name='questao_form'),
-    url(r'matricula',matricula),
-    url(r'consulta_matricula',consulta_matricula),
+    url(r'permission',permission),
+
+
+
+    url(r'^accounts/password/change/$', password_change, {
+        'template_name': 'registration/password_change_form.html'}, 
+        name='password_change'),
+    url(r'^accounts/password/change/done/$', password_change_done, 
+        {'template_name': 'registration/password_change_done.html'},
+        name='password_change_done'),
 ]
 
 if settings.DEBUG:
