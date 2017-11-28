@@ -32,15 +32,15 @@
                 {% else %}
                 {% if user.perfil == 'A' %}
                 <li><a class="link_nav" href="/aluno.html">Área do Aluno</a></li>
-                <li><a class="link_nav" href="/sair">Logout</a></li>
+                <li><a class="link_nav" href="/logout">Logout</a></li>
                 {% else %}
                 {% if user.perfil == 'P' %}
                 <li><a class="link_nav" href="/professor.html">Área do Professor</a></li>
-                <li><a href="/sair">Logout</a></li>
+                <li><a href="/logout">Logout</a></li>
                 {% else %}
                 {% if user.perfil == 'C' %}
                 <li><a class="link_nav" href="/admin/">Olá {{ user }} !</a></li>
-                <li><a href="/sair">Logout</a></li>
+                <li><a href="/logout">Logout</a></li>
                 </div>
                 {% endif %}
                 {% endif %}
