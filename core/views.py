@@ -1,4 +1,4 @@
-
+from django.contrib import messages
 from django.core.mail import send_mail
 from django.core.mail import BadHeaderError
 from django.http import HttpResponse, HttpResponseRedirect
@@ -55,8 +55,10 @@ def contato(request):
             emailOrigem = EMAIL_HOST_USER
             
             send_mail(assunto, mensagem, emailOrigem, [emailDestino], fail_silently=True)
+            messages.success(request, 'Enviado Com Sucesso!')
     else:
         form = ContatoForm()
+        # messages.warning(request, 'Informacoes nao sao validas!')
 
     contexto = {
         "form":form
