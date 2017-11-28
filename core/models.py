@@ -101,7 +101,7 @@ class Professor(Usuario):
  
 class Questao(models.Model):
         curso = models.ForeignKey(Curso)
-        numero = models.IntegerField("Número")
+        numero = models.IntegerField("Numero")
         entrega = models.DateField("Entrega")
 
         arquivo = models.FileField(upload_to="arquivos/")
