@@ -21,6 +21,7 @@ urlpatterns = [
     url(r'aluno', aluno),
     url(r'professor',professor),
     url(r'boletim',boletim),
+    url(r'questao_form',questao_form,name="questao_form"),
 ]
 
 if settings.DEBUG:
