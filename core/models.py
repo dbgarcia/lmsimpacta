@@ -222,3 +222,22 @@ class ArquivoQuestao(models.Model):
 
     def __str__(self):
         return self.arquivo
+
+class Boletim(models.Model):
+    nota_prova = models.DecimalField(max_digits=3, decimal_places=0)
+    nota_trabalho = models.DecimalField(max_digits=3, decimal_places=0)
+
+    disciplina = models.ForeignKey(
+
+        Disciplina
+    )
+
+    turma = models.ForeignKey(
+
+        Turma
+    )
+
+    aluno = models.ForeignKey(
+
+        Aluno
+    )
