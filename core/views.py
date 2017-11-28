@@ -4,8 +4,8 @@ from django.core.mail import BadHeaderError
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required, user_passes_test
-from core.models import Curso,Usuario,Disciplina,Questao,Turma
-from core.forms import ContatoForm,CursoForm,QuestaoForm
+from core.models import Curso, Usuario, Disciplina, Questao, Turma, Boletim
+from core.forms import ContatoForm, CursoForm, QuestaoForm
 from lmsimpacta.settings import *
 
 # Create your views here.
@@ -97,6 +97,34 @@ def curso(request):
     }
     return render(request,"curso.html",contexto)
 
+def boletim(request):
+    
+    boletim = Boletim.objects.filter(aluno=request.user.id)
+    diciplina = Disciplina.objects.filter(nome='{}'.format(boletim[0].disciplina))
+
+    listaDeMedia = []
+    listaDeSituacao = []
+
+    for bol in boletim:
+        media = (float(bol.nota_prova)*0.7) + (float(bol.nota_trabalho)*0.3)
+        listaDeMedia.append(media)
+
+    for valorMedia in listaDeMedia:
+        status = "Aprovado" if valorMedia >= 7 else "Reprovado"
+        listaDeSituacao.append(status)
+
+    contexto = {
+        
+        'boletins': boletim,
+        "disciplinas" : diciplina,
+        'medias': listaDeMedia,
+        'situacao': listaDeSituacao,
+    }
+
+    return render(request, "boletim.html", contexto)
+
+def lista_boletim(request):
+    return render(request, 'lista_boletim.html')
 
 def checa_aluno(user):
      return user.perfil == 'A'
