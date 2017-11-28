@@ -241,3 +241,6 @@ class Boletim(models.Model):
 
         Aluno
     )
+
+
+    

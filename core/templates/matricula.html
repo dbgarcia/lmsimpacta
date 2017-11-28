@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}Matricula.{% endblock %}
+
+{% block main2 %}
+
+<center>
+        
+        <h1>Matricula</h1>
+        <form method="POST" class="form2">
+        	
+                
+                
+                {{ form.as_p }}
+                {% csrf_token %}
+                <button type="submit" class="butcont" onclick="alerta()" >Enviar</button>
+                <script>
+                    function alerta() {
+                        alert('Enviado com sucesso!');
+                    }
+                    </script>
+
+            
+        </form>
+</center>
+<br><br><br><br>
+{% endblock %}
