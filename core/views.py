@@ -48,30 +48,13 @@ def contato(request):
         
         if form.is_valid():
             
-            form.envia_email()
+            #form.envia_email()
             assunto = request.POST.get("nome")
             mensagem = request.POST.get("mensagem")
             emailDestino = request.POST.get("email")
             emailOrigem = EMAIL_HOST_USER
-
-            try:
-                send_mail(assunto, mensagem, emailOrigem, [emailDestino], fail_silently=True)
-            except BadHeaderError:
-                return HttpResponse("Header invalido ou nao encontrado!")
-    else:
-        form = ContatoForm()
-
-    contexto = {
-        "form":form
-    }
-    return render(request,"contato.html",contexto)
-
-def contato(request):
-    print(request.POST)
-    if request.POST:
-        form = ContatoForm(request.POST)
-        if form.is_valid():
-            form.envia_email()
+            
+            send_mail(assunto, mensagem, emailOrigem, [emailDestino], fail_silently=True)
     else:
         form = ContatoForm()
 
