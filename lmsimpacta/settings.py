@@ -53,6 +53,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'lmsimpacta.wsgi.application'
 
+
 mysqlconnstr = os.environ['MYSQLCONNSTR_localdb']
 mysqlconnlst = mysqlconnstr.split(';')
 mysqlconndict = dict(s.split('=',1) for s in mysqlconnlst)
@@ -67,6 +68,7 @@ DATABASES = {
         'PORT': mysqlconndict['Data Source'].split(':')[1],
     }
 }
+
 
 AUTH_PASSWORD_VALIDATORS = [
 #    {

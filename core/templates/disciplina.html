@@ -1,82 +1,27 @@
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1"> 
-        <link rel="stylesheet" href="/static/Base_layout.css">
-		<link rel="stylesheet" href="/static/font.css">
-        <link rel="stylesheet" href="/static/mobile.css" media="(max-width: 320px)">    
-        <title>
-		{% block title %}
-
-    	{% endblock %}
-		</title>
-        <link rel="icon" type="image/png" sizes="16x16" href="/static/icone.png">
-        
+    	<meta charset="UTF-8">
+        {% extends 'base.html' %}
+        {% block title %}Disciplinas.{% endblock %}
     </head>
     <body>
-        <div class="header">
-            <img src="/static/impacta1.png">
-        </div>            
-        <ul class="topnav">
-            <li><a class="active" href="/templates/index.html">Home</a></li>
-            <li><a href="/templates/lista_cursos.html">Lista de Cursos</a></li>
-            <li><a href="/templates/detalhe_curso.html ">Detalhes de Cursos</a></li>
-            <li><a href="/templates/disciplina.html">Disciplinas</a></li>
-            <li><a href="/templates/noticias.html">Noticias</a></li>
-            <li><a href="/templates/contato.html">Contato</a></li>
-            <li><a href="#">Sobre</a></li>  
-            {% if not user.is_authenticated %}
-            <li class="dropdown">
-                <a href="/entrar">Login</a>
-                {% else %}
-                {% if user.perfil == 'A' %}
-                <li><a class="link_nav" href="/aluno.html">Olá {{ user }} !</a></li>
-                <li><a class="link_nav" href="/sair">Logout</a></li>
-                {% else %}
-                {% if user.perfil == 'P' %}
-                <li><a class="link_nav" href="/professor.html">Olá {{ user }} !</a></li>
-                <li><a href="/sair">Logout</a></li>
-                {% else %}
-                {% if user.perfil == 'C' %}
-                <li><a class="link_nav" href="/admin/">Olá {{ user }} !</a></li>
-                <li><a href="/sair">Logout</a></li>
-                </div>
-                {% endif %}
-                {% endif %}
-                {% endif %}
-            </li>
-			{% endif %}
-        </ul>
-              
-                  
-        <div class="row">
-
-            <div class="column side">                                 
-                {% block main %}
-
-    			{% endblock %}
-            </div>
-            <div class="column middle">
-                {% block main2 %}
-
-    			{% endblock %}
-            </div>
-            <div class="column side">
-                {% block main3 %}
-
-    			{% endblock %}
-            </div>
-        </div>
-                  
-        <div class="footer">
-            <img src="/static/impacta2.png ">
-            <footer_font>
-            <div>
-                <br>
-                © 2017 Faculdade Impacta Tecnologia . Todos os direitos reservados
-            </div>
-            </footer_font>
-        </div>
-    </body>
+    	{% block main2 %}
+    	<center>
+    		<ul>
+    			{% for curso in cursos %}
+    			<nomecurso>{{ curso.nome }}</nomecurso>
+    			<br>
+    			<lista_cursos>Tipo {{ curso.tipo }}</lista_cursos><br>
+    			<descricao_curso>
+    			Carga Horária: {{ curso.carga_horaria }}<br>
+    			Descrição:<br>
+    			{{ curso.descricao }}<br><br>
+    			<br><br><br>
+    			{% endfor %}
+    			</descricao_curso>
+            </ul>
+    	</center>
+    	{% endblock %}
+</body>
 </html>

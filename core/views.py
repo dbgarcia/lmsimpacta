@@ -118,7 +118,7 @@ def checa_professor(user):
      return user.perfil == 'P'
 
 @login_required(login_url='/Entrar')
-@user_passes_test(checa_aluno, login_url='aluno.html', redirect_field_name=None)
+@user_passes_test(checa_aluno, login_url='/permission', redirect_field_name=None)
 def aluno(request):
     contexto={
         "disciplina": Disciplina.objects.all() 
@@ -127,7 +127,7 @@ def aluno(request):
     return render(request, "aluno.html", contexto)
 
 @login_required(login_url='/entrar')
-@user_passes_test(checa_professor, login_url='/?error=acesso', redirect_field_name=None)
+@user_passes_test(checa_professor, login_url='/permission', redirect_field_name=None)
 def professor(request):
     contexto={
         "cursos":Curso.objects.all() 
@@ -150,3 +150,7 @@ def questao_form(request):
     }
     return render(request,"questao_form.html",contexto)
     
+def permission(request):
+    return render(request,"permission.html")
+
+
