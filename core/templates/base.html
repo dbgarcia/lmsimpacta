@@ -26,8 +26,8 @@
             <li><a href="/templates/contato.html">Contato</a></li>  
             {% if not user.is_authenticated %}
             <li class="dropdown">
-		<a href="/templates/noticias.html">Noticias</a>
-		<a href="#">Sobre</a>
+		<li><a href="/templates/noticias.html">Noticias</a></li>
+		<li><a href="#">Sobre</a></li>
                 <a href="/entrar">Login</a>
                 {% else %}
                 {% if user.perfil == 'A' %}
